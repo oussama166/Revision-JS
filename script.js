@@ -145,17 +145,14 @@
 function elemFrequent(element) {
     let sortedTab = element.sort()
     let noDoublant = [...new Set(sortedTab)]
-    noDoublant.map((elemTab)=>{
-        console.log(elementOccuence(sortedTab,elemTab))
-    })
-
-}
-
-function elementOccuence(tab,ele){
-    let counter = 0
-    tab.filter(elemet => {
-        (elemet === ele) & ++counter
-    })
-    return counter
+    let tabFrequentation = []
+    for (let i = 0; i < noDoublant.length; i++) {
+        let counter = 0
+        for (let g = 0; g < sortedTab.length; g++) {
+            (sortedTab[g] === noDoublant[i]) && ++counter
+        }
+        tabFrequentation.push([noDoublant[i],counter,`le caractere " ${noDoublant[i]} " ce repete : ${counter} fois`]);
+    }
+    console.log(tabFrequentation.sort((a, b) => b[1] - a[1])[0][2]);
 }
 elemFrequent([3, 'a', 'a', 'b', 2, 3, 'a', 3, 'a', 2, 'c', 9, 3, 'a'])
